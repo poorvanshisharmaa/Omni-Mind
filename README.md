@@ -1,6 +1,6 @@
-# OmniMind Hub
+# OmniMind
 
-Frontend for OmniMind — a multilingual meeting intelligence and translation platform for enterprise/BFSI users. See [`omnimind-project-spec.md`](./omnimind-project-spec.md) for the full product spec and backend architecture.
+OmniMind — a multilingual meeting intelligence and translation platform for enterprise/BFSI users. This repo holds both the frontend and the backend. See [`omnimind-project-spec.md`](./omnimind-project-spec.md) for the full product spec and architecture.
 
 Three main modes, accessible via a sidebar:
 
@@ -21,11 +21,18 @@ Color palette:
 | Support | `#7CD5C7` | `rgb(124, 213, 199)` |
 | Background | `#F2F2ED` | `rgb(242, 242, 237)` |
 
-## Stack
+## Repo layout
 
-Built with TanStack Start (React 19 + TanStack Router/Query), Tailwind CSS v4, and shadcn/radix UI primitives. Deploys as a Cloudflare Worker via Nitro.
+```
+.
+├── src/, public/, ...   # frontend (this directory's root)
+├── backend/              # FastAPI backend — see backend/README.md
+└── omnimind-project-spec.md
+```
 
-## Development
+## Frontend
+
+TanStack Start (React 19 + TanStack Router/Query), Tailwind CSS v4, and shadcn/radix UI primitives. Deploys as a Cloudflare Worker via Nitro.
 
 Requires [Bun](https://bun.sh).
 
@@ -37,3 +44,17 @@ bun run dev
 ```
 
 Other scripts: `bun run build`, `bun run preview`, `bun run lint`, `bun run format`.
+
+## Backend
+
+FastAPI + SQLite, implementing the Meeting Intelligence / Document Intelligence / Universal Translator / search API the frontend talks to. Full details, including what's real vs. mocked in the ML pipeline, are in [`backend/README.md`](./backend/README.md).
+
+```sh
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+API docs at `http://localhost:8000/docs`. Run `pytest` from `backend/` for the test suite.
