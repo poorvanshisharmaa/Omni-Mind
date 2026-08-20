@@ -177,7 +177,7 @@ function DocumentIntelligence() {
               <div className="relative h-1.5 rounded-full bg-secondary">
                 <div
                   className="absolute inset-y-0 left-0 rounded-full bg-accent"
-                  style={{ width: `${CHAPTERS[chapter].pct + 6}%` }}
+                  style={{ width: `${(CHAPTERS[chapter]?.pct ?? 0) + 6}%` }}
                 />
                 {CHAPTERS.map((c, i) => (
                   <button
