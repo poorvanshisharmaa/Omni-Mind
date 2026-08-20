@@ -6,8 +6,9 @@
 
 /*
  * OmniMind design system.
- * Palette: #464B71 (navy slate), #118AB2 (accent blue), #7CD5C7 (mint), #F2F2ED (paper)
+ * Palette: #111844 (ink navy), #4B5694 (indigo), #7288AE (steel blue), #EAE0CF (sand)
  */
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
